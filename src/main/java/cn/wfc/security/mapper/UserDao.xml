@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="cn.wfc.security.mapper.UserMapper">
+    <select id="findUserByName"
+            parameterType="string"
+            resultType="cn.wfc.security.bean.User">
+        select id,username,password,status
+        from
+        user
+        where
+        username = #{name}
+    </select>
+
+    <select id="findRoleByName"
+            parameterType="string"
+            resultType="cn.wfc.security.bean.Role">
+    SELECT
+	id,
+	NAME
+FROM
+	role
+WHERE
+	id IN (
+		SELECT
+			role_id AS id
+		FROM
+			user_role
+		WHERE
+			user_id = (
+				SELECT
+					id
+				FROM
+					USER
+				WHERE
+					username = #{name}
+			)
+	)
+    </select>
+</mapper>
