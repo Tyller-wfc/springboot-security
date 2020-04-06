@@ -1,4 +1,4 @@
-package cn.wfc.security.service;
+package cn.wfc.security.config;
 
 import cn.wfc.security.bean.Role;
 import cn.wfc.security.bean.User;

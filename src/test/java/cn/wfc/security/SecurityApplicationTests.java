@@ -18,8 +18,8 @@ class SecurityApplicationTests {
 
 	@Test
 	void contextLoads() {
-		List<Role> roles = userMapper.findRoleByName("wfc");
-		System.out.println(roles.size());
+		List<User> users = userMapper.getUsers();
+		System.out.println(users.size());
 	}
 
 }

@@ -4,22 +4,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class LoginController {
     static String PATH_PREFIX = "pages/";
 
-    @GetMapping("/")
+    @GetMapping({"/","/index"})
     public String welcome() {
-        return "welcome";
-    }
-    @GetMapping("/index")
-    public String index(){
-        return "index";
+        return PATH_PREFIX+"home";
     }
     @GetMapping("/userLogin")
     public String userLogin(){
-        return PATH_PREFIX + "login";
+        return "index";
+    }
+    @GetMapping("/toUserList")
+    public String userList(){
+        return "../templates/user/user-list :: user-list";
     }
 
     @GetMapping("/level1/{i}")

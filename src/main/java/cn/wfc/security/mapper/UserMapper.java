@@ -11,4 +11,6 @@ public interface UserMapper {
     User findUserByName(String name);
 
     List<Role> findRoleByName(String name);
+
+    List<User> getUsers();
 }
